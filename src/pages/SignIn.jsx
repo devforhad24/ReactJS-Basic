@@ -20,7 +20,15 @@ const SignIn = () => {
         // console.log(email)
         // console.log(password)
         if(email === 'jordan@test.com' && password === 'password'){
-          navigate('/profile');
+
+          const user = {
+            name: 'Jordan Sharles',
+            email: 'jordan@test.com',
+            city: 'Miami',
+            country: 'United States',
+          }
+
+          navigate('/profile', {state: user});
         }else{
           navigate('/signin');
         }
