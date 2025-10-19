@@ -9,6 +9,8 @@ import Contact from './pages/Contact';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Products from './pages/Products';
+import Profile from './pages/Profile';
+import SignIn from './pages/SignIn';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />
+      },
+      {
+        path: '/signin',
+        element: <SignIn />,
+      },
+      {
+        path: '/profile',
+        element: <Profile />,
       },
       {
         path: '/products',
