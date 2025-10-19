@@ -3,20 +3,21 @@ import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './index.css';
-import Navbar from './layout/Navbar';
+import Header from './layout/Header';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Products from './pages/Products';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Navbar />,
+    element: <Header />,
     children: [
       {
-        path: '/products',
-        element: <Products />
+        path: '/',
+        element: <Home />
       },
       {
         path: '/products',
