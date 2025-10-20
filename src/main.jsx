@@ -2,16 +2,22 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import AdminCategories from './components/admin/AdminCategories';
+import AdminManageUsers from './components/admin/AdminManageUsers';
+import AdminProducts from './components/admin/AdminProducts';
+import AdminProfile from './components/admin/AdminProfile';
 import ProductDetails from './components/ProductDetails';
+import UserOrder from './components/user/UserOrder';
+import UserProfile from './components/user/UserProfile';
 import './index.css';
 import Header from './layout/Header';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Products from './pages/Products';
-import Profile from './pages/Profile';
 import SignIn from './pages/SignIn';
+import AdminRoute from './routes/AdminRoute';
+import ProtectedRoute from './routes/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -21,19 +27,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />
+        element: <Products />,
       },
       {
         path: '/signin',
         element: <SignIn />,
-      },
-      {
-        path: '/profile',
-        element: <Profile />,
-      },
-      {
-        path: '/products',
-        element: <Products />,
       },
       {
         path: '/products/:id',
@@ -47,6 +45,40 @@ const router = createBrowserRouter([
         path: '/about',
         element: <About />,
       },
+      {
+        path: '/dashboard/user',
+        element: <ProtectedRoute />,
+        children: [
+          { path: 'profile',
+            element: <UserProfile/>
+          },
+          {
+            path: 'orders',
+            element: <UserOrder/>
+          },
+        ],
+      },
+      {
+        path: '/dashboard/admin',
+        element: <AdminRoute />,
+        children: [
+          { path: 'profile',
+            element: <AdminProfile/>
+          },
+          {
+            path: 'products',
+            element: <AdminProducts/>
+          },
+          {
+            path: 'categories',
+            element: <AdminCategories/>
+          },
+          {
+            path: 'users',
+            element: <AdminManageUsers/>
+          },
+        ],
+      }
       // {
       //   path: '*',
       //   element: <NotFound />,

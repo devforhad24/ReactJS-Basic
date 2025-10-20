@@ -49,7 +49,7 @@ const ProductDetails = () => {
         <p><strong>Rating:</strong> {state.rating}</p>
         <p><strong>Brand:</strong> {state.brand}</p>
         <p><strong>Description:</strong> {state.description && state.description.substring(1, 100)}...</p>
-        <Link to={`/products`} className="product-link">Continue Shopping</Link>
+        <Link to={`/`} className="product-link">Continue Shopping</Link>
       </article>
       )}
 
