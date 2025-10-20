@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Products = () => {
 
@@ -30,27 +31,27 @@ const fetchData = () => {
   },[]);
 
   return (
-    <div>
+    <div className="products-container">
       <h2>All Products</h2>
-      {
-        isLoading && <p>Products are loading...</p>
-      }
-      <section className="products">
+      { isLoading && <p>Products are loading...</p> }
+      { error && <p>Error</p> }
+      {!isLoading && !error && <section className="products">
         {
           products && products.length > 0 && products.map((product) => {
-            const {id,title,description,price,category} = product;
+            const {id,title,description,price,category,images} = product;
             return (
               <article key={id} className="product">
+                <img src={images[0]} alt={title} className="product-img" />
               <h3>{title}</h3>
               <p>Category: {category}</p>
               <p>Price: {price}</p>
               <p>Description: {description && description.substring(1,100)}...</p>
-              <button>Show Details</button>
+              <Link to={`/products/${id}`} state={product} className="product-link" >Show Details</Link>
             </article>
             );
           })
         }
-      </section>
+      </section>}
     </div>
   )
 }

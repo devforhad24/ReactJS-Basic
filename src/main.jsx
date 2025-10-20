@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import ProductDetails from './components/ProductDetails';
 import './index.css';
 import Header from './layout/Header';
 import About from './pages/About';
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: '/products',
         element: <Products />,
+      },
+      {
+        path: '/products/:id',
+        element: <ProductDetails />,
       },
       {
         path: '/contact',

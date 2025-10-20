@@ -5,7 +5,7 @@ const Header = () => {
     <>
       <header className='navbar'>
         <div className='navbar__brand'>
-          <Link to={'/'}>ReatJSApp</Link>
+          <Link to={'/'}><strong>ReatJS</strong>App</Link>
         </div>
         <nav className='navbar__links'>
         <ul>
